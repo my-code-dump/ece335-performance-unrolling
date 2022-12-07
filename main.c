@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define LENGTH 5000
-#define K 3000
+#define LENGTH 3000
+#define K 10000
 
 double A[LENGTH];
 
 void combine3(double *X, double *dest, int length) {
-   int i;
    int z = 0;
 
    while (z < K){
-       for (i = 0; i < length; i++) {
+       for (int i = 0; i < length; i++) {
             *dest = *dest * X[i];
        }
        z++;
@@ -80,6 +79,7 @@ int main () {
     int a = 3;
     int iters;
     int max = 20;
+    printf("For length %d", LENGTH);
     // Get the right combine, 3,5,7
     for (; a <= 7; a+=2) {
         iters = 0;
