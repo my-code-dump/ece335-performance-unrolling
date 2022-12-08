@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define LENGTH 3000
+#define LENGTH 10000
 #define K 10000
 
 double A[LENGTH];
@@ -27,6 +27,10 @@ void combine5(double *X, double *dest, int length) {
        for (i = 0; i < newLen; i+=2) {
             temp = (temp * X[i]) * X[i + 1];
        }
+       // To get any odd remaining values
+       for(; i < length; i++) {
+            temp = temp * X[i];
+       }
        z++;
    }
    *dest = temp;
@@ -42,6 +46,10 @@ void combine7(double *X, double *dest, int length) {
        for (i = 0; i < newLen; i+=2) {
             temp = temp * (X[i] * X[i + 1]);
        }  
+       // To get any odd remaining values
+       for(; i < length; i++) {
+            temp = temp * X[i];
+       }
        z++;
    }
    *dest = temp;
@@ -79,7 +87,7 @@ int main () {
     int a = 3;
     int iters;
     int max = 20;
-    printf("For length %d", LENGTH);
+    printf("For length %d\n", LENGTH);
     // Get the right combine, 3,5,7
     for (; a <= 7; a+=2) {
         iters = 0;
